@@ -33,7 +33,11 @@ GLUT_SIMPLE_FUNCTION(LeaveFullScreen)
 static VALUE
 glut_InitContextVersion(VALUE obj, VALUE majorVersion, VALUE minorVersion)
 {
+#ifdef HAVE_GLUTINITCONTEXTVERSION
 	glutInitContextVersion(NUM2INT(majorVersion), NUM2INT(minorVersion));
+#else
+	rb_raise(rb_eNotImpError, "not implemented on this platform");
+#endif
 	return Qnil;
 }
 
@@ -47,7 +51,11 @@ glut_InitContextFlags(VALUE obj, VALUE flags)
 static VALUE
 glut_InitContextProfile(VALUE obj, VALUE profile)
 {
+#ifdef HAVE_GLUTINITCONTEXTPROFILE
 	glutInitContextProfile(NUM2INT(profile));
+#else
+	rb_raise(rb_eNotImpError, "not implemented on this platform");
+#endif
 	return Qnil;
 }
 

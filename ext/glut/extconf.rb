@@ -62,6 +62,9 @@ ok &&=
   have_header('GL/glut.h') ||
   have_header('GLUT/glut.h') # OS X
 
+have_func 'glutInitContextVersion'
+have_func 'glutInitContextProfile'
+
 if String === ?a then
   $defs.push "-DHAVE_SINGLE_BYTE_STRINGS"
 end
